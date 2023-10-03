@@ -8,7 +8,7 @@ namespace congestion.calculator
     {
         private readonly List<DateTime> _tollFreeDates = new List<DateTime>
         {
-            // تاریخ‌های معاف از مالیات ترافیکی را اضافه کنید
+            // List of dates that are exempt from congestion tax
             new DateTime(2013, 1, 1),
             new DateTime(2013, 3, 28),
             new DateTime(2013, 3, 29),
