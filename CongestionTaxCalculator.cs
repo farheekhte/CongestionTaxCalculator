@@ -17,7 +17,7 @@ namespace congestion.calculator
 
         private readonly Dictionary<TimeSpan, int> _tollFees = new Dictionary<TimeSpan, int>
         {
-            // محاسبه قیمت‌های مالیات ترافیکی بر اساس بازه زمانی
+             // Dictionary to calculate toll fees based on time intervals
             { new TimeSpan(6, 0, 0), 8 },
             { new TimeSpan(6, 30, 0), 13 },
             { new TimeSpan(7, 0, 0), 18 },
@@ -26,7 +26,7 @@ namespace congestion.calculator
             { new TimeSpan(15, 30, 0), 18 },
             { new TimeSpan(17, 0, 0), 13 },
             { new TimeSpan(18, 0, 0), 8 },
-            { TimeSpan.FromDays(1), 0 } // برای اوقاتی که تعریف نشده‌اند
+            { TimeSpan.FromDays(1), 0 } // For unspecified times
         };
 
         private readonly Dictionary<string, Dictionary<TimeSpan, int>> _cityTollFees = new Dictionary<string, Dictionary<TimeSpan, int>>
@@ -66,7 +66,8 @@ namespace congestion.calculator
 
         public int CalculateTotalTax(Vehicle vehicle, List<DateTime> dates, string city)
         {
-            // بررسی اگر خودرو معاف از مالیات ترافیکی باشد یا شهر نامعتبر باشد
+            // Check if the vehicle is toll-free or if the city is invalid
+
             if (IsTollFreeVehicle(vehicle) || !IsValidCity(city))
                 return 0;
 
@@ -87,7 +88,8 @@ namespace congestion.calculator
                 intervalStart = date;
             }
 
-            // اطمینان حاصل شود که مجموع مالیات به حداکثر 60 SEK نرسد
+            // Ensure the total tax does not exceed the maximum of 60 SEK
+
             return Math.Min(totalTax, 60);
         }
 
