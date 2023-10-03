@@ -1,6 +1,6 @@
 namespace congestion.calculator
 {
-    public class Motorbike : IVehicle
+    public class Motorbike : Vehicle
     {
         public string GetVehicleType()
         {
