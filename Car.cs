@@ -2,7 +2,7 @@ using System;
 
 namespace congestion.calculator
 {
-    public class Car : IVehicle
+    public class Car : Vehicle
     {
         public String GetVehicleType()
         {
